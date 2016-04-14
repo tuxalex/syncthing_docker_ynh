@@ -23,7 +23,7 @@ if [ ! -f /.dockerinit ]; then
   done
 fi
 
-#Remove nginx config
+#Remove config files
 #sudo rm -rf /home/yunohost.docker/container-$app/config
 
 # Reload

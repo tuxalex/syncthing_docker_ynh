@@ -12,7 +12,7 @@ RUN useradd -m syncthing
 RUN mkdir -p "/home/syncthing/.config"
 RUN mkdir -p "/home/syncthing/.config/syncthing"
 RUN mkdir -p "/home/syncthing/Sync"
-RUN apt-get update && apt-get install -qy --force-yes ca-certificates curl
+RUN apt-get update && apt-get install -qy --force-yes ca-certificates curl tar && apt-get clean
 
 RUN set -x \
     && curl -s https://syncthing.net/release-key.txt | apt-key add - \
