@@ -22,7 +22,7 @@ fi
 # Remove trailing "/" for next commands and add user name path
 path=${path%/}
 if ! $support_multiuser ; then
-        path=$path$username
+        path=$path_$username
 fi
 containername=${path#/}
 
@@ -95,7 +95,7 @@ else
 fi
  
 #Test ports if yunohost is not dockerized
-if  ! $dockerized ;then
+if [ ! $dockerized ];then
         
 	#Only one port is redirect by nginx
 	sudo yunohost app checkport $redirectport
