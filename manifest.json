@@ -1,0 +1,67 @@
+{
+    "name": "syncthing_docker",
+    "id": "syncthing_docker",
+    "description": {
+        "en": "Build syncthing app inside docker container for yunohost",
+        "fr": "Construit l'application syncthing à l'intérieur d'un conteneur docker pour yunohost"
+    },
+    "developer": {
+        "name": "tuxalex"
+    },
+    "multi_instance": "true",
+    "arguments": {
+        "install": [
+            {
+                "name": "domain",
+                "type": "domain",
+                "ask": {
+                    "en": "Chooze your domain",
+                    "fr": "Choisissez votre domaine"
+                },
+                "example": "domain.org"
+            },
+            {
+                "name": "path",
+                "type": "path",
+                "ask": {
+                    "en": "Choose a path",
+                    "fr": "Choisissez un chemin"
+                },
+                "default": "/syncthing",
+                "example": "/path"
+            },
+            {
+                "name": "is_public",
+                "ask": {
+                    "en": "Is it a public redirection ?",
+                    "fr": "Est-ce une redirection publique ?"
+                },
+                "choices": [
+                    "Yes",
+                    "No"
+                ],
+                "default": "No"
+            },
+	    {
+                "name": "username",
+                "ask": {
+                    "en": "Install for witch user ?",
+                    "fr": "Installer pour quel utilisateur ?"
+                },
+                "example": "johndoe"
+            },
+	    {
+                "name": "owncloud",
+                "ask": {
+                    "en": "Use the owncloud user data directory ?",
+                    "fr": "Utiliser le dossier des données de l'utilisateur associé à owncloud ?"
+                },
+                "choices": [
+                    "Yes",
+                    "No"
+                ],
+                "default": "No"
+            }
+        ]
+    }
+}
