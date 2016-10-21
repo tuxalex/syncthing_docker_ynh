@@ -35,7 +35,3 @@ USER syncthing
 EXPOSE 8384
 EXPOSE 22000/tcp
 EXPOSE 21027/udp 
-
-VOLUME ["/home/syncthing/.config/", "/home/syncthing/data/"]
-
-ENTRYPOINT ["syncthing"]

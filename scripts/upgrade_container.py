@@ -40,9 +40,13 @@ for line in image:
 	#print(out['stream'])
 	#sys.stdout.flush()
 
+#Stop and remove container
+cli.stop(container=containername)
+cli.remove_container(container=containername, force=True)
+
 #Create the container and display result
-app_user=re.split("_",app)
-app_user=app_user[0]
+app_user = re.split("_",app)
+app_user = app_user[0]
 container = cli.create_container(
 			image=imagename,  
 			tty=True,

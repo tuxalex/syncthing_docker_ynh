@@ -1,15 +1,21 @@
 #!/bin/bash
-app=syncthing_docker
-notredirectport=(22000 21027)
+app=$YNH_APP_INSTANCE_NAME
+notredirectports=(22000, 21027)
 
-# Remove NGINX conf
-path=$(sudo yunohost app setting $app path)
-domain=$(sudo yunohost app setting $app domain)
-username=$(sudo yunohost app setting $app user)
-containername=${path#/}_$username
+# Source YunoHost helpers
+. /usr/share/yunohost/helpers
+
+# Retrieve app settings
+#path=$(sudo yunohost app setting $app path)
+#domain=$(sudo yunohost app setting $app domain)
+#username=$(sudo yunohost app setting $app user)
+path=$(ynh_app_setting_get $app path)
+domain=$(ynh_app_setting_get $app domain)
+username=$(ynh_app_setting_get $app user)
+containername=${path#/}_${username}
 
 # Remove nginx configuration
-sudo rm /etc/nginx/conf.d/$domain.d/$containername.conf
+sudo rm /etc/nginx/conf.d/${domain}.d/${containername}.conf
 
 # Remove container
 output=$(sudo python remove_container.py $app $containername)
@@ -17,7 +23,7 @@ output=$(sudo python remove_container.py $app $containername)
 #Close port with no redirection 
 #notredirectport=$(echo $output | cut -f4 -d,)
 if [ ! -f /.dockerinit ]; then
-  for nrp in ${notredirectport[*]}
+  for nrp in ${notredirectports[*]}
      do
         sudo yunohost firewall allow TCP $nrp
         sudo yunohost firewall allow UDP $nrp

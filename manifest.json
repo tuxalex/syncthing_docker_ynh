@@ -1,14 +1,24 @@
 {
-    "name": "syncthing_docker",
+    "name": "Syncthing_docker",
     "id": "syncthing_docker",
+    "packaging_format": 1,
     "description": {
-        "en": "Build syncthing app inside docker container for yunohost",
-        "fr": "Construit l'application syncthing à l'intérieur d'un conteneur docker pour yunohost"
+        "en": "Build app inside docker container for yunohost",
+        "fr": "Construit l'application à l'intérieur d'un conteneur docker pour yunohost"
     },
-    "developer": {
-        "name": "tuxalex"
+    "url": "github.com",
+    "license": "free",
+    "maintainer": {
+        "name": "tuxalex",
+        "email": "tuxy@tuxcloud.fr"
     },
-    "multi_instance": "true",
+    "requirements": {
+        "yunohost": "1.1"
+    },
+    "multi_instance": true,
+    "services": [
+        "nginx"
+    ],
     "arguments": {
         "install": [
             {
@@ -27,7 +37,7 @@
                     "en": "Choose a path",
                     "fr": "Choisissez un chemin"
                 },
-                "default": "/syncthing",
+                "default": "/test",
                 "example": "/path"
             },
             {
@@ -42,7 +52,7 @@
                 ],
                 "default": "No"
             },
-	    {
+	        {
                 "name": "username",
                 "ask": {
                     "en": "Install for witch user ?",
@@ -50,17 +60,14 @@
                 },
                 "example": "johndoe"
             },
-	    {
-                "name": "owncloud",
+            {
+                "name": "language",
                 "ask": {
-                    "en": "Use the owncloud user data directory ?",
-                    "fr": "Utiliser le dossier des données de l'utilisateur associé à owncloud ?"
+                    "en": "Choose the application language",
+                    "fr": "Choisissez la langue de l'application"
                 },
-                "choices": [
-                    "Yes",
-                    "No"
-                ],
-                "default": "No"
+                "choices": ["fr", "en"],
+                "default": "fr"
             }
         ]
     }
