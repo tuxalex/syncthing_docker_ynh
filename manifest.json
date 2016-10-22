@@ -37,7 +37,7 @@
                     "en": "Choose a path",
                     "fr": "Choisissez un chemin"
                 },
-                "default": "/test",
+                "default": "/syncthing",
                 "example": "/path"
             },
             {
@@ -68,6 +68,15 @@
                 },
                 "choices": ["fr", "en"],
                 "default": "fr"
+            },
+            {
+                "name": "owncloud",
+                "ask": {
+                    "en": "Use the owncloud user data directory ?",
+                    "fr": "Utiliser le dossier des données de l'utilisateur associé à owncloud ?"
+                 },
+                "choices": ["Yes", "No"],
+                "default": "No"
             }
         ]
     }
